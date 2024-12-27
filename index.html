@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jahnavi's Portfolio</title>
+    <script src="https://kit.fontawesome.com/7b9b913974.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+
+        html{
+            scroll-behavior: smooth;
+        }
+
+        body{
+        background-color: rgb(0, 0, 0);
+        color : white;
+        font-family: "Poppins", sans-serif;
+        }
+
+        .container{
+            padding: 10px 10%;
+        }
+
+        .logo{
+            width: 200px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-right: 50px;
+        }
+
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            position: relative;
+        }
+
+        .nav-links li a::after{
+            content: '';
+            width: 0;
+            height: 3px;
+            background: #cb6ce6;
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            transition: 0.5s;
+        }
+
+        .nav-links li a:hover::after{
+            width: 100%;
+        }
+
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .header-text img{
+            width: 450px;
+            height: auto;
+            right: 100px;
+            padding-bottom: 50px;
+        }
+        
+        .header-text{
+            margin-top: 10%;
+            font-size: 30px;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .header-text h1{
+            font-size: 60px;
+            margin-top: 20px;
+        }
+
+        .header-text h1 span{
+            color: #cb6ce6;
+        }
+
+/*------------about-----------------*/
+        #about{
+            padding: 80px 0;
+            color: #ababab;
+        }
+
+        .row{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .about-col-1{
+            flex-basis: 35%;
+        }
+
+        .about-col-1 img{
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        .about-col-2{
+            flex-basis: 60%;
+        }
+
+        .sub-title{
+            font-size: 40px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .tab-titles{
+            display: flex;
+            margin: 20px 0 40px;
+        }
+        .tab-links{
+            margin-right: 50px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+        }
+        .tab-links::after{
+            content: '';
+            width: 0;
+            height: 3px;
+            background: #cb6ce6;
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            transition: 0.5s;
+        }
+
+        .tab-links.active-link::after{
+            width: 50%;
+        }        
+        
+        .tab-contents ul li{
+            list-style: none;
+            margin: 10px 0;  
+        }
+
+        .tab-contents ul li span{
+            color: #cb6ce6;
+            font-size: 18px;
+        }
+
+        .tab-contents{
+            display: none;
+        }
+
+        .tab-contents.active-tab{
+            display: block;
+        }
+/*----------------services-------------------*/
+        #services{
+            padding: 30px 0;
+        }
+
+        .services-list{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 40px;
+            margin-top: 80px;
+            margin-bottom: 100px;
+        }
+
+        .services-list div{
+            background: #262626;
+            padding: 40px;
+            font-size: 13px;
+            font-weight: 300;
+            border-top-left-radius: 10px;
+            border-radius: 10px;
+            transition: background 0.5s, transform 0.5s;
+        }
+
+        .services-list div i{
+            font-size: 50px;
+            margin-bottom: 50px;
+        }
+
+        .services-list div h2{
+            font-size: 30px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .services-list div a{
+            text-decoration: none;
+            color: #fff;
+            font-size: 12px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .services-list div:hover{
+            background: #cb6ce6;
+            transform: translateY(-10px);
+        }
+/* -------------- projects ---------------*/
+        #projects{
+            padding: 80px 0;
+        }
+
+        .work-list{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 40px;
+            margin-top: 80px;
+        }
+
+        .work{
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .work img{
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .layer{
+            width: 100%;
+            height: 0;
+            background: linear-gradient(rgba(0, 0, 1, 0.578), #cb6ce6);
+            border-radius: 10px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 40px;
+            text-align: center;
+            font-size: 14px;
+            transition: height 0.5s;
+        }
+
+        .layer h3{
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .layer a{
+            margin-top: 20px;
+            color: #cb6ce6;
+            text-decoration: none;
+            font-size: 18px;
+            line-height: 60px;
+            background: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+        }
+
+        .work:hover img{
+            transform: scale(1.1);
+        }
+
+        .work:hover .layer{
+            height: 100%;
+        }
+
+        .btn{
+            display: block;
+            margin: 50px auto;
+            width: fit-content;
+            border: 1px solid #cb6ce6;
+            padding: 14px 50px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #fff;
+            transition: background 0.5s;
+        }
+
+        .btn:hover{
+            background: #cb6ce6;
+        }
+
+ /*---------------contact--------------*/
+        .contact-left{
+            flex-basis: 35%;
+        }
+
+        .contact-right{
+            flex-basis: 60%;
+        }
+
+        .contact-left p{
+            margin-top: 30px;
+        }
+
+        .contact-left p i{
+            color: #cb6ce6;
+            margin-right: 15px;
+            font-size: 25px;
+        }
+        
+        .social-icons{
+            margin-top: 30px;
+        }
+
+        .social-icons a{
+            text-decoration: none;
+            font-size: 30px;
+            margin-right: 15px;
+            color: #ababab;
+            display: inline-block;
+            transition: transform 0.5s;
+        }
+
+        .social-icons a:hover{
+            color: #cb6ce6;
+            transform: translateY(-5px);
+        }
+
+        .btn.btn2{
+            display: inline-block;
+            background: #cb6ce6;
+        }
+
+        .contact-right form{
+            width: 100%;
+        }
+
+        form input, form textarea{
+            width: 100%;
+            border: 0;
+            outline: none;
+            background: #262626;
+            padding: 15px;
+            margin: 15px 0;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 6px;
+        }
+
+        form .btn2{
+            padding: 14px 60px;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .copyright{
+            width: 100%;
+            text-align: center;
+            padding: 25px 0;
+            background: #262626;
+            font-weight: 300;
+            margin-top: 20px;
+        }
+
+        .copyright i{
+            color: #cb6ce6;
+        }
+
+/* -------------------css for small screens*--------------*/
+
+@media only screen and (max-width: 600px) {
+    
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+    }
+   
+    .header-text img {
+        position: relative;
+        top: 5px; /* Adjust as needed */
+        right: 5px; /* Adjust as needed */
+        transform: none;
+     }
+     .header-text{
+        margin-top: 100%;
+        font-size: 16px;
+        display: flex;
+    }
+    .header-text h1{
+        font-size: 30px;
+    }
+
+    .sub-title{
+        font-size: 40px;
+    }
+    .about-col-1, .about-col-2{
+        flex-basis: 100%;
+    }
+    .about-col-1{
+        margin-bottom: 30px;
+    }
+    .about-col-2{
+        font-size: 14px;
+    }
+    .tab-links{
+        font-size: 16px;
+        margin-right: 20px;
+    }
+    .contact-left, .contact-right{
+        flex-basis: 100%;
+    }
+    .copyright{
+        font-size: 12px;
+    }
+}
+#msg{
+    color: #ababab;
+    margin-top: -40px;
+    display: block;
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div id="header">
+            <div class="container">
+            <nav>
+                <img src="./assets/Black Ivory Minimalist Elegant Script Personal Name Logo.png" class="logo">
+                <div style="display: flex;flex-direction: column;">
+                    <ul class="nav-links" id="navLinks">
+                        <li><a href="#header">Home</a></li>
+                        <li><a href="#about">About me</a></li>
+                        <li><a href="#Services">Services</a></li>
+                        <li><a href="#Projects">Projects</a></li>
+                        <li><a href="#Contact">Contact</a></li>
+                    </ul>
+                    <div class="burger" onclick="toggleNav()">
+                        <div class="line line1"></div>
+                        <div class="line line2"></div>
+                        <div class="line line3"></div>
+                    </div>
+                </div>
+                </nav>
+            <div class="header-text">
+                <div style="margin-top: 100px;">
+                    <p>WEB DEVELOPER</p>
+                    <h1>Hello! I am<br> <span>Jahnavi</span> kotra</h1>
+                </div>
+                <img src="./assets/Screenshot 2023-12-07 124853.png">
+            </div>
+            </div>
+        </div>
+<!-------------about------------------>
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="about-col-1">
+                <img src="./assets/WhatsApp Image 2024-02-15 at 22.54.38_e6a59dc9.jpg ">
+            </div>
+            <div class="about-col-2">
+                <h1 class="sub-title">About me</h1>
+                <p>As a passionate and dedicated fresher web developer, I bring an insatiable curiosity 
+                   for technology and a strong desire to create impactful digital experiences. With a 
+                   solid foundation in HTML, CSS, and JavaScript, coupled with exposure to modern frameworks
+                   like React and Vue.js, I am eager to contribute my skills to innovative projects. Although
+                   my professional experience is limited, I've honed my abilities through personal projects.
+                   My journey in web development is just beginning, and I am committed to continuous learning 
+                   and growth as I strive to make a meaningful impact in the ever-evolving digital landscape.</p>
+            
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('skills')">skills</p>
+                    <p class="tab-links" onclick="opentab('Education')">Education</p>
+                    <p class="tab-links" onclick="opentab('Experience')">Experience</p>
+                </div>
+                <div class="tab-contents active-tab" id="skills">
+                    <ul>
+                        <li><span>Web development</span><br>Frontend</li> 
+                    </ul>
+                </div>
+                <div class="tab-contents" id="Education">
+                    <ul>
+                        <li><span>2022-26</span><br>IIIT TIRUCHIRAPPALLI</li>
+                        <li><span>2020-22</span><br>Sri chaitanya junior college</li>
+                        <li><span>2020</span><br>St.joseph's high school</li> 
+                    </ul>
+                </div>
+                <div class="tab-contents" id="Experience">
+                    <ul>
+                        <li><span>FEB-MAR  2024</span><br>Internship at Ediglobe</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!---------------services--------------->
+<div id="Services">
+    <div class="container">
+        <h1 class="sub-title">My Services</h1>
+        <div class="services-list">
+            <div>
+                <i class="fa-solid fa-code"></i>
+                <h2>Frontend</h2>
+                <p>simple websites using HTML, CSS and JavaScript</p>
+                <a href="#">Learn more</a>
+            </div>
+            <div>
+                <i class="fa-solid fa-crop"></i>
+                <h2>Backend</h2>
+                <p>simple websites using react, node, express etc.</p>
+                <a href="#">Learn more</a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!----------------projects-------------->
+<div id="Projects">
+    <div class="container">
+        <h1 class="sub-title">My Projects</h1>
+        <div class="work-list">
+            <div class="work">
+                <img src="./assets/Task-manager-apps-scaled.jpg">
+                <div class="layer">
+                    <h3>Task Manager</h3>
+                    <p>A simple task manager using html, css, and JavaScript 
+                        which helps in task and record tasks</p>
+                    <a href="https://github.com/jahnavikotra/task-manager"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="./assets/library-img.jpg">
+                <div class="layer">
+                    <h3>library website</h3>
+                    <p>A group project of library website using html, css,js, java, servlets, sql</p>
+                    <a href="https://github.com/jahnavikotra/Library_Management_System-main"><i class="fa-solid fa-up-right-from-square"></i></a>  
+                </div>
+            </div>
+        </div>
+        <a href="#" class="btn">see more</a>
+    </div>
+</div>
+
+<!--------------contact------------------->
+<div id="Contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><a href="mailto:jahnavikotra49@gmail.com"><i class="fa-solid fa-envelope"></i></a>jahnavikotra49@gmail.com</p>
+                <p><i class="fa-solid fa-square-phone"></i>9553002765</p>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/jahnavi__gopal"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/jahnavi-kotra-288398287"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/jahnavikotra"><i class="fa-brands fa-github"></i></a>
+                </div>
+                <a href="./assets/Resume_jk.pdf" download class="btn btn2">Download resume</a>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="Email" placeholder="Your email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2">submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p> &copy; made with <i class="fa-solid fa-heart"></i> by Jahnavi kotra</p>
+    </div>
+</div>
+<script>
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+</script>
+
+<script>
+    function toggleNav() {
+        var navLinks = document.getElementById("navLinks");
+        var burger = document.querySelector(".burger");
+
+        navLinks.classList.toggle("nav-active");
+        burger.classList.toggle("toggle");
+    }
+</script>
+<script>
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    const scrollPosition = window.scrollY;
+
+    // Adjust the scroll value as needed to apply the fixed position at the desired point
+    if (scrollPosition > 100) {
+        navbar.classList.add('fixed');
+    } else {
+        navbar.classList.remove('fixed');
+    }
+});
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbysq6Inm7LTD442dWUdYsKQlzC2_6n2vnqPrn9OZFIcpaocYhMyIZBTnr9_pHcwS-xq/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message sent successfully!"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+
+  </script>
+
+    </header>
+</body>
+</html>
